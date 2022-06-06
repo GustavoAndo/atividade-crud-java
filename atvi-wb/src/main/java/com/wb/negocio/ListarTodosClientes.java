@@ -19,6 +19,7 @@ public class ListarTodosClientes extends Listagem {
 		for (Cliente cliente : clientes) {
 			System.out.println("Nome: " + cliente.nome);
 			System.out.println("Nome social: " + cliente.nomeSocial);
+			System.out.println("Gênero: " + cliente.genero);
 			System.out.println("CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + cliente.getCpf().getDataEmissao());
 			System.out.println("RG(s): ");
 			for (RG rg : cliente.getRgs()) {

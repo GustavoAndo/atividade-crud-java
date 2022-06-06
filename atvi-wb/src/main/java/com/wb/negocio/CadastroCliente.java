@@ -28,6 +28,18 @@ public class CadastroCliente extends Cadastro {
 		System.out.println("Por favor informe o nome social do cliente:");
 		String nomeSocial = entrada.receberTexto();
 		
+		boolean execucaoGenero = true;
+		String genero = "";
+		while(execucaoGenero) {
+			System.out.println("Por favor informe o gênero do cliente - Masculino ou Feminino:");
+			genero = entrada.receberTexto();
+			if (genero.equals("Masculino") || genero.equals("Feminino")) {
+				execucaoGenero = false;
+			} else {
+				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
+			}
+		}
+		
 		System.out.println("Por favor informe o número do cpf:");
 		String valor = entrada.receberTexto();
 		
@@ -39,7 +51,7 @@ public class CadastroCliente extends Cadastro {
 		
 		CPF cpf = new CPF(dataEmissao, valor);
 		
-		Cliente cliente = new Cliente(nome, nomeSocial, cpf);
+		Cliente cliente = new Cliente(nome, nomeSocial, cpf, genero);
 		
 		boolean execucaoRg = true;
 		while (execucaoRg) {

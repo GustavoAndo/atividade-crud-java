@@ -7,15 +7,17 @@ import java.util.List;
 public class Cliente {
 	public String nome;
 	public String nomeSocial;
+	public String genero;
 	private CPF cpf;
 	private List<RG> rgs;
 	private LocalDate dataCadastro;
 	private List<Telefone> telefones;
 	private List<Produto> produtosConsumidos;
 	private List<Servico> servicosConsumidos;
-	public Cliente(String nome, String nomeSocial, CPF cpf) {
+	public Cliente(String nome, String nomeSocial, CPF cpf, String genero) {
 		this.nome = nome;
 		this.nomeSocial = nomeSocial;
+		this.genero = genero;
 		this.cpf = cpf;
 		this.rgs = new ArrayList<>();
 		this.dataCadastro = LocalDate.now();
