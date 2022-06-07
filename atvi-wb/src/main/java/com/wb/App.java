@@ -9,6 +9,10 @@ import com.wb.negocio.Cadastro;
 import com.wb.negocio.CadastroCliente;
 import com.wb.negocio.CadastroProduto;
 import com.wb.negocio.CadastroServico;
+import com.wb.negocio.ExcluirCliente;
+import com.wb.negocio.ExcluirProduto;
+import com.wb.negocio.ExcluirServico;
+import com.wb.negocio.Exclusao;
 import com.wb.negocio.Listagem;
 import com.wb.negocio.ListarTodosClientes;
 import com.wb.negocio.ListarTodosProdutos;
@@ -43,9 +47,11 @@ public class App {
 				while (execucao1) {
 					System.out.println("Que tipo de operação você deseja fazer:");
 					System.out.println("1 - Cadastrar cliente");
-					System.out.println("2 - Adicionar um serviço consumido");
-					System.out.println("3 - Adicionar um produto consumido");
-					System.out.println("4 - Listar todos os clientes");
+					System.out.println("2 - Listar todos os clientes");
+					System.out.println("3 - Atualizar dados de um cliente");
+					System.out.println("4 - Excluir cliente");
+					System.out.println("5 - Adicionar um serviço consumido");
+					System.out.println("6 - Adicionar um produto consumido");
 					System.out.println("0 - Voltar para tela inicial");
 					
 					Entrada entrada1 = new Entrada();
@@ -62,6 +68,22 @@ public class App {
 						break;
 					case 2:
 						if (contador.contarClientes(empresa.getClientes()) == 0) {
+							System.out.println("Não há clientes cadastrados!");
+							break;
+						}
+						Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
+						listagemClientes.listar();
+						break;
+					case 4:
+						if (contador.contarClientes(empresa.getClientes()) == 0) {
+							System.out.println("Não há clientes cadastrados!");
+							break;
+						}
+						Exclusao excluirCliente = new ExcluirCliente(empresa.getClientes());
+						excluirCliente.excluir();
+						break;
+					case 5:
+						if (contador.contarClientes(empresa.getClientes()) == 0) {
 							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
 							break;
 						}
@@ -72,7 +94,7 @@ public class App {
 						Cadastro adicionarServico = new AdicionarServico(empresa.getClientes(), empresa.getServicos());
 						adicionarServico.cadastrar();
 						break;
-					case 3:
+					case 6:
 						if (contador.contarClientes(empresa.getClientes()) == 0) {
 							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
 							break;
@@ -83,10 +105,6 @@ public class App {
 						}
 						Cadastro adicionarProduto = new AdicionarProduto(empresa.getClientes(), empresa.getProdutos());
 						adicionarProduto.cadastrar();
-						break;
-					case 4:
-						Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
-						listagemClientes.listar();
 						break;
 					default:
 						System.out.println("Operação não entendida");
@@ -100,6 +118,8 @@ public class App {
 					System.out.println("Que tipo de operação você deseja fazer:");
 					System.out.println("1 - Cadastrar serviço");
 					System.out.println("2 - Listar todos os serviços");
+					System.out.println("3 - Atualizar dados de um serviço");
+					System.out.println("4 - Excluir serviço");
 					System.out.println("0 - Voltar para tela inicial");
 					
 					Entrada entrada2 = new Entrada();
@@ -115,8 +135,20 @@ public class App {
 						cadastroServico.cadastrar();
 						break;
 					case 2:
+						if (contador.contarServicos(empresa.getServicos()) == 0) {
+							System.out.println("Não há serviços cadastrados!");
+							break;
+						}
 						Listagem listagemServicos = new ListarTodosServicos(empresa.getServicos());
 						listagemServicos.listar();
+						break;
+					case 4:
+						if (contador.contarServicos(empresa.getServicos()) == 0) {
+							System.out.println("Não há serviços cadastrados!");
+							break;
+						}
+						Exclusao excluirServico = new ExcluirServico(empresa.getServicos());
+						excluirServico.excluir();
 						break;
 					default:
 						System.out.println("Operação não entendida");
@@ -130,6 +162,8 @@ public class App {
 					System.out.println("Que tipo de operação você deseja fazer:");
 					System.out.println("1 - Cadastrar produto");
 					System.out.println("2 - Listar todos os produtos");
+					System.out.println("3 - Atualizar dados de um produto");
+					System.out.println("4 - Excluir produto");
 					System.out.println("0 - Voltar para tela inicial");
 					
 					Entrada entrada3 = new Entrada();
@@ -145,14 +179,29 @@ public class App {
 						cadastroProduto.cadastrar();
 						break;
 					case 2:
+						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+							System.out.println("Não há produto cadastrados!");
+							break;
+						}
 						Listagem listagemProdutos = new ListarTodosProdutos(empresa.getProdutos());
 						listagemProdutos.listar();
+						break;
+					case 4:
+						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+							System.out.println("Não há produto cadastrados!");
+							break;
+						}
+						Exclusao excluirProduto = new ExcluirProduto(empresa.getProdutos());
+						excluirProduto.excluir();
 						break;
 					default:
 						System.out.println("Operação não entendida");
 					}
 				}
 				break;
+				
+			default:
+				System.out.println("Operação não entendida\n");
 			}
 		}
 	}

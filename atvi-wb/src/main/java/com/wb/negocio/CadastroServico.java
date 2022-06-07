@@ -39,6 +39,8 @@ public class CadastroServico extends Cadastro{
 		
 		Servico servico = new Servico(nome, genero, valor, 0);
 		this.servicos.add(servico);
+		System.out.println("Serviço cadastrado com sucesso!");
+
 	}
 	
 }

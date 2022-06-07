@@ -1,0 +1,35 @@
+package com.wb.negocio;
+
+import java.util.List;
+
+import com.wb.io.Entrada;
+import com.wb.modelo.Servico;
+
+public class ExcluirServico extends Exclusao {
+	private List<Servico> servicos;
+	private Entrada entrada;
+
+	public ExcluirServico(List<Servico> servicos) {
+		this.servicos = servicos;
+		this.entrada = new Entrada();
+	}
+
+	@Override
+	public void excluir() {
+		System.out.println("Início da exclusão de um serviço");
+				
+		System.out.println("Lista de todos os serviços:");
+		int i = 1;
+		for (Servico servico : servicos) {
+			System.out.println(i + " - " + servico.nome);	
+			i++;
+		}
+		
+		System.out.println("Por favor informe o numero do serviço:");
+		int numServico = entrada.receberNumeroInteiro();
+		
+		this.servicos.remove(numServico - 1);
+		System.out.println("Serviço excluído com sucesso!");
+	}
+	
+}

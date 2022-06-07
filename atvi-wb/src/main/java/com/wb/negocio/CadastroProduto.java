@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.wb.io.Entrada;
 import com.wb.modelo.Produto;
+
 public class CadastroProduto extends Cadastro{
 	private List<Produto> produtos;
 	private Entrada entrada;
@@ -39,5 +40,6 @@ public class CadastroProduto extends Cadastro{
 		Produto produto = new Produto(nome, genero, valor, 0);
 		
 		this.produtos.add(produto);
+		System.out.println("Produto cadastrado com sucesso!");
 	}
 }
