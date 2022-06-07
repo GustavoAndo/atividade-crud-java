@@ -4,16 +4,16 @@ import java.util.List;
 
 import com.wb.io.Entrada;
 import com.wb.modelo.Cliente;
-import com.wb.modelo.Servico;
+import com.wb.modelo.Produto;
 
-public class AdicionarServico extends Cadastro {
+public class AdicionarProduto extends Cadastro{
 	private List<Cliente> clientes;
-	private List<Servico> servicos;
+	private List<Produto> produtos;
 	private Entrada entrada;
 
-	public AdicionarServico(List<Cliente> clientes, List<Servico> servicos) {
+	public AdicionarProduto(List<Cliente> clientes, List<Produto> produtos) {
 		this.clientes = clientes;
-		this.servicos = servicos;
+		this.produtos = produtos;
 		this.entrada = new Entrada();
 	}
 	
@@ -31,20 +31,19 @@ public class AdicionarServico extends Cadastro {
 		
 		Cliente cliente = clientes.get(numCliente - 1);
 		
-		System.out.println("Lista de todos os serviços:");
+		System.out.println("Lista de todos os produtos:");
 		int j = 1;
-		for (Servico servico : servicos) {
-			System.out.println(j + ") " + servico.nome);	
+		for (Produto produto : produtos) {
+			System.out.println(j + ") " + produto.nome);	
 			j++;
 		}
 		
 		System.out.println("Por favor informe o número do serviço a ser adicionado");
-		int numServico = entrada.receberNumeroInteiro();
+		int numProduto = entrada.receberNumeroInteiro();
 		
-		Servico servico = servicos.get(numServico - 1);
+		Produto produto = produtos.get(numProduto - 1);
 		
-		cliente.getServicosConsumidos().add(servico);
-		servico.setQuantidadeConsumido(servico.getQuantidadeConsumido() + 1);
+		cliente.getProdutosConsumidos().add(produto);
+		produto.setQuantidadeConsumido(produto.getQuantidadeConsumido() + 1);
 	}
-	
 }

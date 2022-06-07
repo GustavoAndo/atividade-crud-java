@@ -14,8 +14,8 @@ public class ListarTodosProdutos extends Listagem {
 	@Override
 	public void listar() {
 		System.out.println("Lista de todos os produtos:");
+		System.out.println("--------------------------------------");
 		for (Produto produto : produtos) {
-			System.out.println("--------------------------------------");
 			System.out.println("Nome: " + produto.nome);
 			System.out.println("Valor: " + produto.valor);
 			System.out.println("Gênero: " + produto.genero);

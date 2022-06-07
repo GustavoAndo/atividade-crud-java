@@ -16,4 +16,9 @@ public class Produto {
 	public int getQuantidadeConsumido() {
 		return quantidadeConsumido;
 	}
+
+	public void setQuantidadeConsumido(int quantidadeConsumido) {
+		this.quantidadeConsumido = quantidadeConsumido;
+	}
+	
 }

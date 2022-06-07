@@ -1,7 +1,9 @@
 package com.wb;
 
+import com.wb.io.Contador;
 import com.wb.io.Entrada;
 import com.wb.modelo.Empresa;
+import com.wb.negocio.AdicionarProduto;
 import com.wb.negocio.AdicionarServico;
 import com.wb.negocio.Cadastro;
 import com.wb.negocio.CadastroCliente;
@@ -16,13 +18,15 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Bem-vindo ao cadastro de clientes do Grupo World Beauty");
 		Empresa empresa = new Empresa();
+		Contador contador = new Contador();
 		boolean execucao = true;
 		while (execucao) {
+			
 			System.out.println("O que deseja consultar:");
 			System.out.println("1 - Controle de Clientes");
 			System.out.println("2 - Controle de Serviços");
 			System.out.println("3 - Controle de Produtos");
-			System.out.println("4 - Clientes/Serviços/Produtos populares");
+			System.out.println("4 - Outras funções");
 			System.out.println("0 - Sair");
 
 			Entrada entrada = new Entrada();
@@ -57,8 +61,28 @@ public class App {
 						cadastroCliente.cadastrar();
 						break;
 					case 2:
+						if (contador.contarClientes(empresa.getClientes()) == 0) {
+							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
+							break;
+						}
+						if (contador.contarServicos(empresa.getServicos()) == 0) {
+							System.out.println("Não há serviços cadastrados! Cadastre um serviço para adicioná-los como consumidos pelo cliente");
+							break;
+						}
 						Cadastro adicionarServico = new AdicionarServico(empresa.getClientes(), empresa.getServicos());
 						adicionarServico.cadastrar();
+						break;
+					case 3:
+						if (contador.contarClientes(empresa.getClientes()) == 0) {
+							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
+							break;
+						}
+						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+							System.out.println("Não há produto cadastrados! Cadastre um produto para adicioná-los como consumidos pelo cliente");
+							break;
+						}
+						Cadastro adicionarProduto = new AdicionarProduto(empresa.getClientes(), empresa.getProdutos());
+						adicionarProduto.cadastrar();
 						break;
 					case 4:
 						Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
