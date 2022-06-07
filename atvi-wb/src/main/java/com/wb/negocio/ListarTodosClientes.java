@@ -17,6 +17,7 @@ public class ListarTodosClientes extends Listagem {
 	public void listar() {
 		System.out.println("Lista de todos os clientes:");
 		for (Cliente cliente : clientes) {
+			System.out.println("--------------------------------------");
 			System.out.println("Nome: " + cliente.nome);
 			System.out.println("Nome social: " + cliente.nomeSocial);
 			System.out.println("Gênero: " + cliente.genero);

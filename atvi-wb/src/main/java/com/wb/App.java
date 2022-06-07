@@ -2,12 +2,15 @@ package com.wb;
 
 import com.wb.io.Entrada;
 import com.wb.modelo.Empresa;
+import com.wb.negocio.AdicionarServico;
 import com.wb.negocio.Cadastro;
 import com.wb.negocio.CadastroCliente;
 import com.wb.negocio.CadastroProduto;
+import com.wb.negocio.CadastroServico;
 import com.wb.negocio.Listagem;
 import com.wb.negocio.ListarTodosClientes;
 import com.wb.negocio.ListarTodosProdutos;
+import com.wb.negocio.ListarTodosServicos;
 
 public class App {
 	public static void main(String[] args) {
@@ -30,12 +33,15 @@ public class App {
 				execucao = false;
 				System.out.println("Até mais!\n");
 				break;
+				
 			case 1:
 				boolean execucao1 = true;
 				while (execucao1) {
 					System.out.println("Que tipo de operação você deseja fazer:");
 					System.out.println("1 - Cadastrar cliente");
-					System.out.println("2 - Listar todos os clientes");
+					System.out.println("2 - Adicionar um serviço consumido");
+					System.out.println("3 - Adicionar um produto consumido");
+					System.out.println("4 - Listar todos os clientes");
 					System.out.println("0 - Voltar para tela inicial");
 					
 					Entrada entrada1 = new Entrada();
@@ -51,6 +57,10 @@ public class App {
 						cadastroCliente.cadastrar();
 						break;
 					case 2:
+						Cadastro adicionarServico = new AdicionarServico(empresa.getClientes(), empresa.getServicos());
+						adicionarServico.cadastrar();
+						break;
+					case 4:
 						Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
 						listagemClientes.listar();
 						break;
@@ -58,12 +68,14 @@ public class App {
 						System.out.println("Operação não entendida");
 					}
 				}
-			case 3:
+				break;
+				
+			case 2:
 				boolean execucao2 = true;
 				while (execucao2) {
 					System.out.println("Que tipo de operação você deseja fazer:");
-					System.out.println("1 - Cadastrar produto");
-					System.out.println("2 - Listar todos os produtos");
+					System.out.println("1 - Cadastrar serviço");
+					System.out.println("2 - Listar todos os serviços");
 					System.out.println("0 - Voltar para tela inicial");
 					
 					Entrada entrada2 = new Entrada();
@@ -71,7 +83,37 @@ public class App {
 					
 					switch(operacao2) {
 					case 0:
-						execucao1 = false;
+						execucao2 = false;
+						System.out.println("Voltando para tela inicial...\n");
+						break;
+					case 1:
+						Cadastro cadastroServico = new CadastroServico(empresa.getServicos());
+						cadastroServico.cadastrar();
+						break;
+					case 2:
+						Listagem listagemServicos = new ListarTodosServicos(empresa.getServicos());
+						listagemServicos.listar();
+						break;
+					default:
+						System.out.println("Operação não entendida");
+					}
+				}
+				break;
+				
+			case 3:
+				boolean execucao3 = true;
+				while (execucao3) {
+					System.out.println("Que tipo de operação você deseja fazer:");
+					System.out.println("1 - Cadastrar produto");
+					System.out.println("2 - Listar todos os produtos");
+					System.out.println("0 - Voltar para tela inicial");
+					
+					Entrada entrada3 = new Entrada();
+					int operacao3 = entrada3.receberNumeroInteiro();
+					
+					switch(operacao3) {
+					case 0:
+						execucao3 = false;
 						System.out.println("Voltando para tela inicial...\n");
 						break;
 					case 1:
@@ -86,6 +128,7 @@ public class App {
 						System.out.println("Operação não entendida");
 					}
 				}
+				break;
 			}
 		}
 	}
