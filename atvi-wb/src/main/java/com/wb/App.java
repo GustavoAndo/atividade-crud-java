@@ -1,22 +1,22 @@
 package com.wb;
 
+import com.wb.cadastro.Cadastro;
+import com.wb.cadastro.CadastroCliente;
+import com.wb.cadastro.CadastroProduto;
+import com.wb.cadastro.CadastroServico;
+import com.wb.excluir.ExcluirCliente;
+import com.wb.excluir.ExcluirProduto;
+import com.wb.excluir.ExcluirServico;
+import com.wb.excluir.Exclusao;
 import com.wb.io.Contador;
 import com.wb.io.Entrada;
+import com.wb.listagem.Listagem;
+import com.wb.listagem.ListarTodosClientes;
+import com.wb.listagem.ListarTodosProdutos;
+import com.wb.listagem.ListarTodosServicos;
 import com.wb.modelo.Empresa;
 import com.wb.negocio.AdicionarProduto;
 import com.wb.negocio.AdicionarServico;
-import com.wb.negocio.Cadastro;
-import com.wb.negocio.CadastroCliente;
-import com.wb.negocio.CadastroProduto;
-import com.wb.negocio.CadastroServico;
-import com.wb.negocio.ExcluirCliente;
-import com.wb.negocio.ExcluirProduto;
-import com.wb.negocio.ExcluirServico;
-import com.wb.negocio.Exclusao;
-import com.wb.negocio.Listagem;
-import com.wb.negocio.ListarTodosClientes;
-import com.wb.negocio.ListarTodosProdutos;
-import com.wb.negocio.ListarTodosServicos;
 
 public class App {
 	public static void main(String[] args) {

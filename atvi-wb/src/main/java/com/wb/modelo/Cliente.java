@@ -43,4 +43,22 @@ public class Cliente {
 	public List<Servico> getServicosConsumidos() {
 		return servicosConsumidos;
 	}
+	public void setCpf(CPF cpf) {
+		this.cpf = cpf;
+	}
+	public void setRgs(List<RG> rgs) {
+		this.rgs = rgs;
+	}
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+	public void setProdutosConsumidos(List<Produto> produtosConsumidos) {
+		this.produtosConsumidos = produtosConsumidos;
+	}
+	public void setServicosConsumidos(List<Servico> servicosConsumidos) {
+		this.servicosConsumidos = servicosConsumidos;
+	}
 }

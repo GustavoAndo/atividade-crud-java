@@ -1,4 +1,4 @@
-package com.wb.negocio;
+package com.wb.listagem;
 
 import java.util.List;
 

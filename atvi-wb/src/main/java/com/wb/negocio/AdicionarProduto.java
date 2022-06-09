@@ -2,6 +2,7 @@ package com.wb.negocio;
 
 import java.util.List;
 
+import com.wb.cadastro.Cadastro;
 import com.wb.io.Entrada;
 import com.wb.modelo.Cliente;
 import com.wb.modelo.Produto;

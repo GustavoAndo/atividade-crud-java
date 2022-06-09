@@ -1,4 +1,4 @@
-package com.wb.negocio;
+package com.wb.cadastro;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

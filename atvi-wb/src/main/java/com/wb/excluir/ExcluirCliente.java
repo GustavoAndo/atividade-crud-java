@@ -1,4 +1,4 @@
-package com.wb.negocio;
+package com.wb.excluir;
 
 import java.util.List;
 
