@@ -1,5 +1,7 @@
 package com.wb;
 
+import com.wb.atualizar.Atualizacao;
+import com.wb.atualizar.AtualizarCliente;
 import com.wb.cadastro.Cadastro;
 import com.wb.cadastro.CadastroCliente;
 import com.wb.cadastro.CadastroProduto;
@@ -73,6 +75,14 @@ public class App {
 						}
 						Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
 						listagemClientes.listar();
+						break;
+					case 3:
+						if (contador.contarClientes(empresa.getClientes()) == 0) {
+							System.out.println("Não há clientes cadastrados!");
+							break;
+						}
+						Atualizacao atualizarClientes = new AtualizarCliente(empresa.getClientes());
+						atualizarClientes.atualizar();
 						break;
 					case 4:
 						if (contador.contarClientes(empresa.getClientes()) == 0) {
