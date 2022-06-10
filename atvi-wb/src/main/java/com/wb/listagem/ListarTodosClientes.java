@@ -41,7 +41,7 @@ public class ListarTodosClientes extends Listagem {
 				}
 			}
 			System.out.println("Produto(s) Consumido(s): ");
-			if (cliente.getServicosConsumidos().size() == 0) {
+			if (cliente.getProdutosConsumidos().size() == 0) {
 				System.out.println(" Este cliente não possui produtos consumidos.");
 			} else {
 				for (Produto produto : cliente.getProdutosConsumidos()){

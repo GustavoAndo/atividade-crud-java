@@ -29,7 +29,7 @@ public class CadastroServico extends Cadastro{
 		String genero = "";
 		while(execucaoGenero) {
 			System.out.println("Por favor informe o gênero do cliente:");
-			System.out.println("1 - Maculino");
+			System.out.println("1 - Masculino");
 			System.out.println("2 - Feminino");
 			int generoNum = entrada.receberNumeroInteiro();
 			entrada.receberTexto();

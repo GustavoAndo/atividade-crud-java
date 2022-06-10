@@ -27,7 +27,7 @@ public class AdicionarServico extends Cadastro {
 			i++;
 		}
 		
-		System.out.println("Por favor informe o número do cliente");
+		System.out.println("Por favor informe o número do cliente:");
 		int numCliente = entrada.receberNumeroInteiro(); 
 		
 		Cliente cliente = clientes.get(numCliente - 1);
@@ -39,7 +39,7 @@ public class AdicionarServico extends Cadastro {
 			j++;
 		}
 		
-		System.out.println("Por favor informe o número do serviço a ser adicionado");
+		System.out.println("Por favor informe o número do serviço a ser adicionado:");
 		int numServico = entrada.receberNumeroInteiro();
 		
 		Servico servico = servicos.get(numServico - 1);

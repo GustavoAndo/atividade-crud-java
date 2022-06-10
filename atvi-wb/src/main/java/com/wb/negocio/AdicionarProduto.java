@@ -27,7 +27,7 @@ public class AdicionarProduto extends Cadastro{
 			i++;
 		}
 		
-		System.out.println("Por favor informe o número do cliente");
+		System.out.println("Por favor informe o número do cliente:");
 		int numCliente = entrada.receberNumeroInteiro(); 
 		
 		Cliente cliente = clientes.get(numCliente - 1);
