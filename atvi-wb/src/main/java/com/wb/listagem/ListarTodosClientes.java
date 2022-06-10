@@ -2,7 +2,6 @@ package com.wb.listagem;
 
 import java.util.List;
 
-import com.wb.io.Contador;
 import com.wb.modelo.Cliente;
 import com.wb.modelo.Produto;
 import com.wb.modelo.RG;
@@ -11,11 +10,9 @@ import com.wb.modelo.Telefone;
 
 public class ListarTodosClientes extends Listagem {
 	private List<Cliente> clientes;
-	private Contador contador;
 
 	public ListarTodosClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
-		this.contador = new Contador();
 	}
 
 	@Override
@@ -36,7 +33,7 @@ public class ListarTodosClientes extends Listagem {
 				System.out.println(" (" + telefone.getDdd() + ")" + telefone.getNumero());
 			}
 			System.out.println("Serviço(s) Consumido(s): ");
-			if (contador.contarServicos(cliente.getServicosConsumidos()) == 0) {
+			if (cliente.getServicosConsumidos().size() == 0) {
 				System.out.println(" Este cliente não possui serviços consumidos.");
 			} else {
 				for (Servico servico : cliente.getServicosConsumidos()){
@@ -44,7 +41,7 @@ public class ListarTodosClientes extends Listagem {
 				}
 			}
 			System.out.println("Produto(s) Consumido(s): ");
-			if (contador.contarProdutos(cliente.getProdutosConsumidos()) == 0) {
+			if (cliente.getServicosConsumidos().size() == 0) {
 				System.out.println(" Este cliente não possui produtos consumidos.");
 			} else {
 				for (Produto produto : cliente.getProdutosConsumidos()){

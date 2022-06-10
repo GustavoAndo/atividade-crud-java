@@ -28,15 +28,25 @@ public class CadastroCliente extends Cadastro {
 		System.out.println("Por favor informe o nome social do cliente:");
 		String nomeSocial = entrada.receberTexto();
 		
-		boolean execucaoGenero = true;
 		String genero = "";
+		boolean execucaoGenero = true;
 		while(execucaoGenero) {
-			System.out.println("Por favor informe o gênero do cliente - Masculino ou Feminino:");
-			genero = entrada.receberTexto();
-			if (genero.equals("Masculino") || genero.equals("Feminino")) {
+			System.out.println("Por favor informe o gênero do cliente:");
+			System.out.println("1 - Maculino");
+			System.out.println("2 - Feminino");
+			int generoNum = entrada.receberNumeroInteiro();
+			entrada.receberTexto();
+			if (generoNum == 1) {
+				genero = "Masculino";
 				execucaoGenero = false;
 			} else {
+				if (generoNum == 2) {
+					genero = "Feminino";
+					execucaoGenero = false;
+				}
+				else {
 				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
+				}
 			}
 		}
 		
@@ -72,7 +82,7 @@ public class CadastroCliente extends Cadastro {
 				System.out.println("Deseja adicionar outro rg?");
 				System.out.println("1 - Sim");
 				System.out.println("2 - Não");
-				int continuarRg =entrada.receberNumeroInteiro();
+				int continuarRg = entrada.receberNumeroInteiro();
 				entrada.receberTexto();
 				
 				switch(continuarRg) {

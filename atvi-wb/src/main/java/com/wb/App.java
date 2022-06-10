@@ -2,6 +2,8 @@ package com.wb;
 
 import com.wb.atualizar.Atualizacao;
 import com.wb.atualizar.AtualizarCliente;
+import com.wb.atualizar.AtualizarProduto;
+import com.wb.atualizar.AtualizarServico;
 import com.wb.cadastro.Cadastro;
 import com.wb.cadastro.CadastroCliente;
 import com.wb.cadastro.CadastroProduto;
@@ -10,7 +12,6 @@ import com.wb.excluir.ExcluirCliente;
 import com.wb.excluir.ExcluirProduto;
 import com.wb.excluir.ExcluirServico;
 import com.wb.excluir.Exclusao;
-import com.wb.io.Contador;
 import com.wb.io.Entrada;
 import com.wb.listagem.Listagem;
 import com.wb.listagem.ListarTodosClientes;
@@ -24,7 +25,6 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Bem-vindo ao cadastro de clientes do Grupo World Beauty");
 		Empresa empresa = new Empresa();
-		Contador contador = new Contador();
 		boolean execucao = true;
 		while (execucao) {
 			
@@ -69,7 +69,7 @@ public class App {
 						cadastroCliente.cadastrar();
 						break;
 					case 2:
-						if (contador.contarClientes(empresa.getClientes()) == 0) {
+						if (empresa.getClientes().size() == 0) {
 							System.out.println("Não há clientes cadastrados!");
 							break;
 						}
@@ -77,7 +77,7 @@ public class App {
 						listagemClientes.listar();
 						break;
 					case 3:
-						if (contador.contarClientes(empresa.getClientes()) == 0) {
+						if (empresa.getClientes().size() == 0) {
 							System.out.println("Não há clientes cadastrados!");
 							break;
 						}
@@ -85,7 +85,7 @@ public class App {
 						atualizarClientes.atualizar();
 						break;
 					case 4:
-						if (contador.contarClientes(empresa.getClientes()) == 0) {
+						if (empresa.getClientes().size() == 0) {
 							System.out.println("Não há clientes cadastrados!");
 							break;
 						}
@@ -93,11 +93,11 @@ public class App {
 						excluirCliente.excluir();
 						break;
 					case 5:
-						if (contador.contarClientes(empresa.getClientes()) == 0) {
+						if (empresa.getClientes().size() == 0) {
 							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
 							break;
 						}
-						if (contador.contarServicos(empresa.getServicos()) == 0) {
+						if ((empresa.getServicos().size()) == 0) {
 							System.out.println("Não há serviços cadastrados! Cadastre um serviço para adicioná-los como consumidos pelo cliente");
 							break;
 						}
@@ -105,11 +105,11 @@ public class App {
 						adicionarServico.cadastrar();
 						break;
 					case 6:
-						if (contador.contarClientes(empresa.getClientes()) == 0) {
+						if (empresa.getClientes().size() == 0) {
 							System.out.println("Não há clientes cadastrados! Cadastre um cliente para cadastrar os seus serviços consumidos");
 							break;
 						}
-						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+						if (empresa.getProdutos().size() == 0) {
 							System.out.println("Não há produto cadastrados! Cadastre um produto para adicioná-los como consumidos pelo cliente");
 							break;
 						}
@@ -120,8 +120,7 @@ public class App {
 						System.out.println("Operação não entendida");
 					}
 				}
-				break;
-				
+				break;	
 			case 2:
 				boolean execucao2 = true;
 				while (execucao2) {
@@ -145,15 +144,23 @@ public class App {
 						cadastroServico.cadastrar();
 						break;
 					case 2:
-						if (contador.contarServicos(empresa.getServicos()) == 0) {
+						if (empresa.getServicos().size() == 0) {
 							System.out.println("Não há serviços cadastrados!");
 							break;
 						}
 						Listagem listagemServicos = new ListarTodosServicos(empresa.getServicos());
 						listagemServicos.listar();
 						break;
+					case 3:
+						if (empresa.getServicos().size() == 0) {
+							System.out.println("Não há serviços cadastrados!");
+							break;
+						}
+						Atualizacao atualizarServico = new AtualizarServico(empresa.getServicos());
+						atualizarServico.atualizar();
+						break;
 					case 4:
-						if (contador.contarServicos(empresa.getServicos()) == 0) {
+						if (empresa.getServicos().size() == 0) {
 							System.out.println("Não há serviços cadastrados!");
 							break;
 						}
@@ -189,15 +196,23 @@ public class App {
 						cadastroProduto.cadastrar();
 						break;
 					case 2:
-						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+						if (empresa.getProdutos().size() == 0) {
 							System.out.println("Não há produto cadastrados!");
 							break;
 						}
 						Listagem listagemProdutos = new ListarTodosProdutos(empresa.getProdutos());
 						listagemProdutos.listar();
 						break;
+					case 3:
+						if (empresa.getProdutos().size() == 0) {
+							System.out.println("Não há produto cadastrados!");
+							break;
+						}
+						Atualizacao atualizarProduto = new AtualizarProduto(empresa.getProdutos());
+						atualizarProduto.atualizar();
+						break;
 					case 4:
-						if (contador.contarProdutos(empresa.getProdutos()) == 0) {
+						if (empresa.getProdutos().size() == 0) {
 							System.out.println("Não há produto cadastrados!");
 							break;
 						}

@@ -28,12 +28,22 @@ public class CadastroProduto extends Cadastro{
 		boolean execucaoGenero = true;
 		String genero = "";
 		while(execucaoGenero) {
-			System.out.println("Por favor informe para qual gênero é indicado o produto, Masculino ou Feminino:");
-			genero = entrada.receberTexto();
-			if (genero.equals("Masculino") || genero.equals("Feminino")) {
+			System.out.println("Por favor informe o gênero do cliente:");
+			System.out.println("1 - Maculino");
+			System.out.println("2 - Feminino");
+			int generoNum = entrada.receberNumeroInteiro();
+			entrada.receberTexto();
+			if (generoNum == 1) {
+				genero = "Masculino";
 				execucaoGenero = false;
 			} else {
+				if (generoNum == 2) {
+					genero = "Feminino";
+					execucaoGenero = false;
+				}
+				else {
 				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
+				}
 			}
 		}
 		
