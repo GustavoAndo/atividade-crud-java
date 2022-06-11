@@ -18,8 +18,6 @@ public class ListarTodosProdutos extends Listagem {
 		for (Produto produto : produtos) {
 			System.out.println("Nome: " + produto.nome);
 			System.out.println("Valor: " + produto.valor);
-			System.out.println("Gênero: " + produto.genero);
-			System.out.println("Quantidade de vezes consumidos: " + produto.getQuantidadeConsumido());
 			System.out.println("--------------------------------------");
 		}
 	}

@@ -45,6 +45,5 @@ public class AdicionarProduto extends Cadastro{
 		Produto produto = produtos.get(numProduto - 1);
 		
 		cliente.getProdutosConsumidos().add(produto);
-		produto.setQuantidadeConsumido(produto.getQuantidadeConsumido() + 1);
 	}
 }

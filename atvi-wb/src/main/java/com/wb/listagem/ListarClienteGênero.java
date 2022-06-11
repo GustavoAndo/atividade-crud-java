@@ -1,9 +1,8 @@
-package com.wb.cadastro;
+package com.wb.listagem;
 
 import java.util.List;
 
 import com.wb.io.Entrada;
-import com.wb.listagem.Listagem;
 import com.wb.modelo.Cliente;
 import com.wb.modelo.Produto;
 import com.wb.modelo.RG;

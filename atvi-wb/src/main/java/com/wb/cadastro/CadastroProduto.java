@@ -25,29 +25,7 @@ public class CadastroProduto extends Cadastro{
 		double valor = entrada.receberNumeroDouble();
 		entrada.receberTexto();
 		
-		boolean execucaoGenero = true;
-		String genero = "";
-		while(execucaoGenero) {
-			System.out.println("Por favor informe o gênero do cliente:");
-			System.out.println("1 - Maculino");
-			System.out.println("2 - Feminino");
-			int generoNum = entrada.receberNumeroInteiro();
-			entrada.receberTexto();
-			if (generoNum == 1) {
-				genero = "Masculino";
-				execucaoGenero = false;
-			} else {
-				if (generoNum == 2) {
-					genero = "Feminino";
-					execucaoGenero = false;
-				}
-				else {
-				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
-				}
-			}
-		}
-		
-		Produto produto = new Produto(nome, genero, valor, 0);
+		Produto produto = new Produto(nome, valor);
 		
 		this.produtos.add(produto);
 		System.out.println("Produto cadastrado com sucesso!");

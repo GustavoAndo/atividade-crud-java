@@ -8,13 +8,14 @@ import com.wb.cadastro.Cadastro;
 import com.wb.cadastro.CadastroCliente;
 import com.wb.cadastro.CadastroProduto;
 import com.wb.cadastro.CadastroServico;
-import com.wb.cadastro.ListarClienteGênero;
 import com.wb.excluir.ExcluirCliente;
 import com.wb.excluir.ExcluirProduto;
 import com.wb.excluir.ExcluirServico;
 import com.wb.excluir.Exclusao;
 import com.wb.io.Entrada;
 import com.wb.listagem.Listagem;
+import com.wb.listagem.ListarClienteGênero;
+import com.wb.listagem.ListarMaisConsumidos;
 import com.wb.listagem.ListarTodosClientes;
 import com.wb.listagem.ListarTodosProdutos;
 import com.wb.listagem.ListarTodosServicos;
@@ -130,7 +131,7 @@ public class App {
 							System.out.println("Não há serviços cadastrados! Cadastre um serviço para adicioná-los como consumidos pelo cliente");
 							break;
 						}
-						Exclusao removerServico = new RemoverServico(empresa.getClientes(), empresa.getServicos());
+						Exclusao removerServico = new RemoverServico(empresa.getClientes());
 						removerServico.excluir();
 						break;
 					case 8:
@@ -142,7 +143,7 @@ public class App {
 							System.out.println("Não há produtos cadastrados! Cadastre um produto para adicioná-los como consumidos pelo cliente");
 							break;
 						}
-						Exclusao removerProduto = new RemoverProduto(empresa.getClientes(), empresa.getProdutos());
+						Exclusao removerProduto = new RemoverProduto(empresa.getClientes());
 						removerProduto.excluir();
 						break;
 					default:
@@ -257,11 +258,11 @@ public class App {
 			case 4:
 				boolean execucao4 = true;
 				while (execucao4) {
-					System.out.println("Que tipo de operação você deseja fazer:");
-					System.out.println("1 - Listar todos clientes por gênero");
-					System.out.println("2 - Serviços ou produtos mais consumidos por gênero");
-					System.out.println("3 - Seviços ou produtos mais consumidos (em geral)");
-					System.out.println("4 - 10 clientes que mais consumiram serviços ou produtos");
+					System.out.println("Que tipo de operação de listagem você deseja fazer:");
+					System.out.println("1 - Todos clientes por gênero");
+					System.out.println("2 - Seviços ou produtos mais consumidos (em geral)");
+					System.out.println("3 - Serviços ou produtos mais consumidos por gênero");
+					System.out.println("4 - Clientes que mais consumiram serviços ou produtos em quantidade");
 					System.out.println("5 - 10 clientes que menos consumiram serviços ou produtos");
 					System.out.println("6 - 5 clientes que mais consumiram em valor");
 					System.out.println("0 - Voltar para tela inicial");
@@ -281,6 +282,10 @@ public class App {
 						}
 						Listagem listarClienteGênero = new ListarClienteGênero(empresa.getClientes());
 						listarClienteGênero.listar();
+						break;
+					case 2:
+						Listagem listarMaisConsumidos = new ListarMaisConsumidos(empresa);
+						listarMaisConsumidos.listar();
 						break;
 					default:
 						System.out.println("Operação não entendida");

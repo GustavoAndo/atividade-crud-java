@@ -9,12 +9,10 @@ import com.wb.modelo.Produto;
 
 public class RemoverProduto extends Exclusao{
 	private List<Cliente> clientes;
-	private List<Produto> produtos;
 	private Entrada entrada;
 
-	public RemoverProduto(List<Cliente> clientes, List<Produto> produtos) {
+	public RemoverProduto(List<Cliente> clientes) {
 		this.clientes = clientes;
-		this.produtos = produtos;
 		this.entrada = new Entrada();
 	}
 	
@@ -51,15 +49,9 @@ public class RemoverProduto extends Exclusao{
 				System.out.println("Por favor informe o número do produto a ser removido:");
 				int numProduto = entrada.receberNumeroInteiro();
 				
-				Produto produto = produtos.get(numProduto - 1);
-				
 				cliente.getProdutosConsumidos().remove(numProduto - 1);
-				produto.setQuantidadeConsumido(produto.getQuantidadeConsumido() - 1);
 				execucaoCliente = false;
 			}
-		
 		}
-
-	}
-	
+	}	
 }

@@ -9,12 +9,10 @@ import com.wb.modelo.Servico;
 
 public class RemoverServico extends Exclusao {
 	private List<Cliente> clientes;
-	private List<Servico> servicos;
 	private Entrada entrada;
 
-	public RemoverServico(List<Cliente> clientes, List<Servico> servicos) {
+	public RemoverServico(List<Cliente> clientes) {
 		this.clientes = clientes;
-		this.servicos = servicos;
 		this.entrada = new Entrada();
 	}
 	
@@ -51,10 +49,7 @@ public class RemoverServico extends Exclusao {
 				System.out.println("Por favor informe o número do serviço a ser removido:");
 				int numServico = entrada.receberNumeroInteiro();
 				
-				Servico servico = servicos.get(numServico - 1);
-				
 				cliente.getServicosConsumidos().remove(numServico - 1);
-				servico.setQuantidadeConsumido(servico.getQuantidadeConsumido() - 1);
 				execucaoCliente = false;
 			}
 		

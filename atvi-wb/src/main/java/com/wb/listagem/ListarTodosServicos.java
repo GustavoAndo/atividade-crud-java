@@ -18,8 +18,6 @@ public class ListarTodosServicos extends Listagem {
 		for (Servico servico : servicos) {
 			System.out.println("Nome: " + servico.nome);
 			System.out.println("Valor: " + servico.valor);
-			System.out.println("Gênero: " + servico.genero);
-			System.out.println("Quantidade de vezes consumidos: " + servico.getQuantidadeConsumido());
 			System.out.println("--------------------------------------");
 		}
 	}

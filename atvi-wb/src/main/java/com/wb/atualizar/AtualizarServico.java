@@ -35,8 +35,6 @@ public class AtualizarServico extends Atualizacao{
 			
 			System.out.println("1) Nome: " + servico.nome);
 			System.out.println("2) Valor: " + servico.valor);
-			System.out.println("3) Gênero indicado: " + servico.genero);
-			System.out.println("4) Quantidade de vezes consumido: " + servico.getQuantidadeConsumido());
 			System.out.println("0) Sair");
 	
 			System.out.println("Por favor informe o numero do dado que você deseja atualizar:");
@@ -57,36 +55,6 @@ public class AtualizarServico extends Atualizacao{
 				System.out.println("Por favor informe o novo valor (Atual: " + servico.valor + "):");
 				double valor = entrada.receberNumeroDouble();
 				servico.valor = valor;
-				break;
-			case 3:
-				System.out.println("Por favor informe o novo valor do gênero (Atual: " + servico.genero + "):");
-				String genero = "";
-				boolean execucaoGenero = true;
-				while(execucaoGenero) {
-					System.out.println("Por favor informe o gênero do cliente:");
-					System.out.println("1 - Masculino");
-					System.out.println("2 - Feminino");
-					int generoNum = entrada.receberNumeroInteiro();
-					entrada.receberTexto();
-					if (generoNum == 1) {
-						genero = "Masculino";
-						execucaoGenero = false;
-					} else {
-						if (generoNum == 2) {
-							genero = "Feminino";
-							execucaoGenero = false;
-						}
-						else {
-						System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
-						}
-					}
-				}
-				servico.genero = genero;
-				break;
-			case 4:
-				System.out.println("Por favor informe o novo valor de quantidade de vezes consumido (Atual: " + servico.getQuantidadeConsumido() + "):");
-				int quantidade = entrada.receberNumeroInteiro();
-				servico.setQuantidadeConsumido(quantidade);
 				break;
 			default:
 				System.out.println("Operação não entendida");

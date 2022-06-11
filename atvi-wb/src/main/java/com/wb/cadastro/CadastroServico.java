@@ -25,29 +25,7 @@ public class CadastroServico extends Cadastro{
 		double valor = entrada.receberNumeroDouble();
 		entrada.receberTexto();
 		
-		boolean execucaoGenero = true;
-		String genero = "";
-		while(execucaoGenero) {
-			System.out.println("Por favor informe o gênero do cliente:");
-			System.out.println("1 - Masculino");
-			System.out.println("2 - Feminino");
-			int generoNum = entrada.receberNumeroInteiro();
-			entrada.receberTexto();
-			if (generoNum == 1) {
-				genero = "Masculino";
-				execucaoGenero = false;
-			} else {
-				if (generoNum == 2) {
-					genero = "Feminino";
-					execucaoGenero = false;
-				}
-				else {
-				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
-				}
-			}
-		}
-		
-		Servico servico = new Servico(nome, genero, valor, 0);
+		Servico servico = new Servico(nome, valor);
 		this.servicos.add(servico);
 		System.out.println("Serviço cadastrado com sucesso!");
 

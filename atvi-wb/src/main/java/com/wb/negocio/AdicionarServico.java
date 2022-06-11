@@ -45,7 +45,6 @@ public class AdicionarServico extends Cadastro {
 		Servico servico = servicos.get(numServico - 1);
 		
 		cliente.getServicosConsumidos().add(servico);
-		servico.setQuantidadeConsumido(servico.getQuantidadeConsumido() + 1);
 	}
 	
 }
