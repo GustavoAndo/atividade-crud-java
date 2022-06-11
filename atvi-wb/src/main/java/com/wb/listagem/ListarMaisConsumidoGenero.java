@@ -13,20 +13,20 @@ import com.wb.modelo.QuantidadeProduto;
 import com.wb.modelo.QuantidadeServico;
 import com.wb.modelo.Servico;
 
-public class ListarMaisConsumidos extends Listagem {
+public class ListarMaisConsumidoGenero extends Listagem {
 	private Empresa empresa;
 	private Entrada entrada;
 
-	public ListarMaisConsumidos(Empresa empresa) {
+	public ListarMaisConsumidoGenero(Empresa empresa) {
 		this.empresa = empresa;
 		this.entrada = new Entrada();
 	}
 	
 	@Override
 	public void listar() {
-		int consumidoNum = 0;
 		boolean execucaoConsumido = true;
-		while(execucaoConsumido) {
+		int consumidoNum = 0;
+		while(execucaoConsumido) {		
 			System.out.println("Deseja mostrar serviços ou produtos mais consumidos?");
 			System.out.println("1 - Serviços");
 			System.out.println("2 - Produtos");
@@ -40,13 +40,35 @@ public class ListarMaisConsumidos extends Listagem {
 			}
 		}
 
+		String genero = "";
+		boolean execucaoGenero = true;
+		while(execucaoGenero) {
+			System.out.println("Por qual gênero você deseja listar?");
+			System.out.println("1 - Masculino");
+			System.out.println("2 - Feminino");
+			int generoNum = entrada.receberNumeroInteiro();
+			entrada.receberTexto();
+			if (generoNum == 1) {
+				genero = "Masculino";
+				execucaoGenero = false;
+			} else {
+				if (generoNum == 2) {
+					genero = "Feminino";
+					execucaoGenero = false;
+				}
+				else {
+				System.out.println("Valor inválido! Verifique se você digitou corretamente!");
+				}
+			}
+		}
+		
 		if (consumidoNum == 1) {
 			List <QuantidadeServico> quantidadeTodosServicos = new ArrayList<>();
 			for (Servico servico : empresa.getServicos()) {
 				int quantidade = 0;
 				for (Cliente cliente : empresa.getClientes()) {
 					for (Servico servicoCliente : cliente.getServicosConsumidos()) {
-						if(servico.equals(servicoCliente)) {
+						if(servico.equals(servicoCliente) && cliente.genero.equals(genero)) {
 							quantidade++;
 						}
 					}
@@ -62,7 +84,7 @@ public class ListarMaisConsumidos extends Listagem {
 				  }
 				});
 			
-			System.out.println("Lista dos serviços mais consumidos");
+			System.out.println("Lista dos serviços mais consumidos pelo gênero " + genero.toLowerCase());
 			System.out.println("--------------------------------------");
 			for (QuantidadeServico quantidadeServico : quantidadeTodosServicos) {
 				System.out.println("Nome: " + quantidadeServico.servico.nome);
@@ -78,7 +100,7 @@ public class ListarMaisConsumidos extends Listagem {
 					int quantidade = 0;
 					for (Cliente cliente : empresa.getClientes()) {
 						for (Produto clienteProduto : cliente.getProdutosConsumidos()) {
-							if(produto.equals(clienteProduto)) {
+							if(produto.equals(clienteProduto) && cliente.genero.equals(genero)) {
 								quantidade++;
 							}
 						}
@@ -94,7 +116,7 @@ public class ListarMaisConsumidos extends Listagem {
 					  }
 					});
 				
-				System.out.println("Lista dos serviços mais consumidos");
+				System.out.println("Lista dos serviços mais consumidos pelo gênero " + genero.toLowerCase());
 				System.out.println("--------------------------------------");
 				for (QuantidadeProduto quantidadeProduto : quantidadeTodosProdutos) {
 					System.out.println("Nome: " + quantidadeProduto.produto.nome);

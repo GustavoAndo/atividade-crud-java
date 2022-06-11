@@ -9,11 +9,11 @@ import com.wb.modelo.RG;
 import com.wb.modelo.Servico;
 import com.wb.modelo.Telefone;
 
-public class ListarClienteGênero extends Listagem {
+public class ListarClienteGenero extends Listagem {
 	private List<Cliente> clientes;
 	private Entrada entrada;
 
-	public ListarClienteGênero(List<Cliente> clientes) {
+	public ListarClienteGenero(List<Cliente> clientes) {
 		this.clientes = clientes;
 		this.entrada = new Entrada();
 	}

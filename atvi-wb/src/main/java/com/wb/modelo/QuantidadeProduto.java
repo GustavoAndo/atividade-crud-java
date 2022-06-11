@@ -1,11 +1,11 @@
 package com.wb.modelo;
 
-public class QuantidadeServico{
-	public Servico servico;
+public class QuantidadeProduto {
+	public Produto produto;
 	private Integer quantidadeConsumido;
 	
-	public QuantidadeServico(Servico servico, Integer quantidadeConsumido) {
-		this.servico = servico;
+	public QuantidadeProduto(Produto produto, Integer quantidadeConsumido) {
+		this.produto = produto;
 		this.quantidadeConsumido = quantidadeConsumido;
 	}
 
