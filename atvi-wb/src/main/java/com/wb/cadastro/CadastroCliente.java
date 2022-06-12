@@ -45,7 +45,7 @@ public class CadastroCliente extends Cadastro {
 					execucaoGenero = false;
 				}
 				else {
-				System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
+				System.out.println("Valor inválido! Verifique se você digitou corretamente!");
 				}
 			}
 		}

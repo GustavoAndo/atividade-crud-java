@@ -47,10 +47,17 @@ public class ListarClienteGenero extends Listagem {
 			if (cliente.genero.equals(genero)) {
 				System.out.println("Nome: " + cliente.nome);
 				System.out.println("Nome social: " + cliente.nomeSocial);
-				System.out.println("CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + cliente.getCpf().getDataEmissao());
+				System.out.println("Gênero: " + cliente.genero);
+				System.out.println("CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + 
+						cliente.getCpf().getDataEmissao().getDayOfMonth() + "/" + 
+						cliente.getCpf().getDataEmissao().getMonthValue() + "/" + 
+						cliente.getCpf().getDataEmissao().getYear());
 				System.out.println("RG(s): ");
 				for (RG rg : cliente.getRgs()) {
-					System.out.println(" " + rg.getValor() + " - Data Emissão: "  + rg.getDataEmissao());
+					System.out.println(" " + rg.getValor() + " - Data Emissão: "  + 					
+							rg.getDataEmissao().getDayOfMonth() + "/" + 
+							rg.getDataEmissao().getMonthValue() + "/" + 
+							rg.getDataEmissao().getYear());
 				}
 				System.out.println("Telefone(s): ");
 				for (Telefone telefone : cliente.getTelefones()) {
@@ -72,7 +79,9 @@ public class ListarClienteGenero extends Listagem {
 						System.out.println(" " + produto.nome + " - Valor do Produto: " + produto.valor);
 					}
 				}
-				System.out.println("Data de cadastro: " + cliente.getDataCadastro());
+				System.out.println("Data de cadastro: " + cliente.getDataCadastro().getDayOfMonth() +
+						"/" + cliente.getDataCadastro().getMonthValue() +
+						"/" + cliente.getDataCadastro().getYear());
 				System.out.println("--------------------------------------");
 			}	
 		}	

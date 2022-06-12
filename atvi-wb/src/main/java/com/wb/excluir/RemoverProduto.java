@@ -1,8 +1,7 @@
-package com.wb.negocio;
+package com.wb.excluir;
 
 import java.util.List;
 
-import com.wb.excluir.Exclusao;
 import com.wb.io.Entrada;
 import com.wb.modelo.Cliente;
 import com.wb.modelo.Produto;

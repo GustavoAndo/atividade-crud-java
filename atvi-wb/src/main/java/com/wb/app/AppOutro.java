@@ -3,8 +3,10 @@ package com.wb.app;
 import com.wb.io.Entrada;
 import com.wb.listagem.Listagem;
 import com.wb.listagem.ListarClienteGenero;
+import com.wb.listagem.ListarDezConsumiram;
 import com.wb.listagem.ListarMaisConsumidoGenero;
 import com.wb.listagem.ListarMaisConsumidos;
+import com.wb.listagem.ListarMaisConsumiramValor;
 import com.wb.modelo.Empresa;
 
 public class AppOutro extends Execucao {
@@ -26,7 +28,7 @@ public class AppOutro extends Execucao {
 			System.out.println("3 - Serviços ou produtos mais consumidos por gênero");
 			System.out.println("4 - 10 clientes que mais consumiram serviços ou produtos em quantidade");
 			System.out.println("5 - 10 clientes que menos consumiram serviços ou produtos em quantidade");
-			System.out.println("6 - 5 clientes que mais consumiram em valor");
+			System.out.println("6 - 5 clientes que mais gastaram em serviços ou produtos");
 			System.out.println("0 - Voltar para tela inicial");
 			
 			int operacao = entrada.receberNumeroInteiro();
@@ -45,12 +47,28 @@ public class AppOutro extends Execucao {
 				listarClienteGênero.listar();
 				break;
 			case 2:
+				if (empresa.getServicos().size() == 0) {
+					System.out.println("Não há serviços cadastrados!");
+					break;
+				}
 				Listagem listarMaisConsumidos = new ListarMaisConsumidos(empresa);
 				listarMaisConsumidos.listar();
 				break;
 			case 3:
 				Listagem listarMaisConsumidoGenero = new ListarMaisConsumidoGenero(empresa);
 				listarMaisConsumidoGenero.listar();
+				break;
+			case 4:
+				Listagem listarDezMaisConsumiram = new ListarDezConsumiram(empresa, "mais");
+				listarDezMaisConsumiram.listar();
+				break;
+			case 5:
+				Listagem listarDezMenosConsumiram = new ListarDezConsumiram(empresa, "menos");
+				listarDezMenosConsumiram.listar();
+				break;
+			case 6:
+				Listagem listarMaisConsumiramValor = new ListarMaisConsumiramValor(empresa);
+				listarMaisConsumiramValor.listar();
 				break;
 			default:
 				System.out.println("Operação não entendida");

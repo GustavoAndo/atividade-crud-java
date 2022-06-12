@@ -2,18 +2,18 @@ package com.wb.app;
 
 import com.wb.atualizar.Atualizacao;
 import com.wb.atualizar.AtualizarCliente;
+import com.wb.cadastro.AdicionarProduto;
+import com.wb.cadastro.AdicionarServico;
 import com.wb.cadastro.Cadastro;
 import com.wb.cadastro.CadastroCliente;
 import com.wb.excluir.ExcluirCliente;
 import com.wb.excluir.Exclusao;
+import com.wb.excluir.RemoverProduto;
+import com.wb.excluir.RemoverServico;
 import com.wb.io.Entrada;
 import com.wb.listagem.Listagem;
 import com.wb.listagem.ListarTodosClientes;
 import com.wb.modelo.Empresa;
-import com.wb.negocio.AdicionarProduto;
-import com.wb.negocio.AdicionarServico;
-import com.wb.negocio.RemoverProduto;
-import com.wb.negocio.RemoverServico;
 
 public class AppCliente extends Execucao {
 	private Empresa empresa;
