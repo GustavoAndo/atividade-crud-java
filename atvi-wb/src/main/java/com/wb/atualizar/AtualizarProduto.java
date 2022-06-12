@@ -25,14 +25,20 @@ public class AtualizarProduto extends Atualizacao {
 			i++;
 		}
 		
-		System.out.println("Por favor informe o numero do produto que deseja atualizar:");
-		int numProduto = entrada.receberNumeroInteiro();
-		
+		int numProduto = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do produto que deseja atualizar:");
+			numProduto = entrada.receberNumeroInteiro();
+			if (numProduto > 0 && numProduto <= produtos.size()) {
+				break;
+			}
+			System.out.println("Número de produto inválido! Verifique se o número inserido está correto.");
+		}
+
 		Produto produto = produtos.get(numProduto - 1);
 		
 		boolean execucaoSel = true;
 		while(execucaoSel) {
-			
 			System.out.println("1) Nome: " + produto.nome);
 			System.out.println("2) Valor: " + produto.valor);
 			System.out.println("0) Sair");
@@ -50,11 +56,13 @@ public class AtualizarProduto extends Atualizacao {
 				System.out.println("Por favor informe o novo valor do nome (Atual: " + produto.nome + "):");
 				String nome = entrada.receberTexto();
 				produto.nome = nome;
+				System.out.println("Nome do produto atualizado com sucesso!");
 				break;
 			case 2:
 				System.out.println("Por favor informe o novo valor (Atual: " + produto.valor + "):");
 				double valor = entrada.receberNumeroDouble();
 				produto.valor = valor;
+				System.out.println("Valor do produto atualizado com sucesso!");
 				break;
 			default:
 				System.out.println("Operação não entendida");

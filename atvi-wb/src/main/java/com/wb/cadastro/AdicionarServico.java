@@ -26,8 +26,15 @@ public class AdicionarServico extends Cadastro {
 			i++;
 		}
 		
-		System.out.println("Por favor informe o número do cliente:");
-		int numCliente = entrada.receberNumeroInteiro(); 
+		int numCliente = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do cliente:");
+			numCliente = entrada.receberNumeroInteiro();
+			if (numCliente > 0 && numCliente <= clientes.size()) {
+				break;
+			}
+			System.out.println("Número de cliente inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Cliente cliente = clientes.get(numCliente - 1);
 		
@@ -38,8 +45,15 @@ public class AdicionarServico extends Cadastro {
 			j++;
 		}
 		
-		System.out.println("Por favor informe o número do serviço a ser adicionado:");
-		int numServico = entrada.receberNumeroInteiro();
+		int numServico = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do serviço que deseja atualizar:");
+			numServico = entrada.receberNumeroInteiro();
+			if (numServico > 0 && numServico <= servicos.size()) {
+				break;
+			}
+			System.out.println("Número de serviço inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Servico servico = servicos.get(numServico - 1);
 		

@@ -25,8 +25,15 @@ public class AtualizarServico extends Atualizacao{
 			i++;
 		}
 		
-		System.out.println("Por favor informe o numero do serviço que deseja atualizar:");
-		int numServico = entrada.receberNumeroInteiro();
+		int numServico = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do serviço que deseja atualizar:");
+			numServico = entrada.receberNumeroInteiro();
+			if (numServico > 0 && numServico <= servicos.size()) {
+				break;
+			}
+			System.out.println("Número de serviço inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Servico servico = servicos.get(numServico - 1);
 		
@@ -50,15 +57,17 @@ public class AtualizarServico extends Atualizacao{
 				System.out.println("Por favor informe o novo valor do nome (Atual: " + servico.nome + "):");
 				String nome = entrada.receberTexto();
 				servico.nome = nome;
+				System.out.println("Nome do serviço atualizado com sucesso!");
 				break;
 			case 2:
 				System.out.println("Por favor informe o novo valor (Atual: " + servico.valor + "):");
 				double valor = entrada.receberNumeroDouble();
 				servico.valor = valor;
+				System.out.println("Valor do serviço atualizado com sucesso!");
 				break;
 			default:
 				System.out.println("Operação não entendida");
-			}
+			}	
 		}
 	}
 }

@@ -25,11 +25,17 @@ public class ExcluirServico extends Exclusao {
 			i++;
 		}
 		
-		System.out.println("Por favor informe o numero do serviço:");
-		int numServico = entrada.receberNumeroInteiro();
+		int numServico = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do serviço que deseja atualizar:");
+			numServico = entrada.receberNumeroInteiro();
+			if (numServico > 0 && numServico <= servicos.size()) {
+				break;
+			}
+			System.out.println("Número de serviço inválido! Verifique se o número inserido está correto.");
+		}
 		
 		this.servicos.remove(numServico - 1);
 		System.out.println("Serviço excluído com sucesso!");
 	}
-	
 }

@@ -26,8 +26,15 @@ public class AdicionarProduto extends Cadastro{
 			i++;
 		}
 		
-		System.out.println("Por favor informe o número do cliente:");
-		int numCliente = entrada.receberNumeroInteiro(); 
+		int numCliente = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do cliente:");
+			numCliente = entrada.receberNumeroInteiro();
+			if (numCliente > 0 && numCliente <= clientes.size()) {
+				break;
+			}
+			System.out.println("Número de cliente inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Cliente cliente = clientes.get(numCliente - 1);
 		
@@ -38,8 +45,15 @@ public class AdicionarProduto extends Cadastro{
 			j++;
 		}
 		
-		System.out.println("Por favor informe o número do serviço a ser adicionado");
-		int numProduto = entrada.receberNumeroInteiro();
+		int numProduto = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do produto que deseja atualizar:");
+			numProduto = entrada.receberNumeroInteiro();
+			if (numProduto > 0 && numProduto <= produtos.size()) {
+				break;
+			}
+			System.out.println("Número de produto inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Produto produto = produtos.get(numProduto - 1);
 		

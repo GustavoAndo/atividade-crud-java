@@ -47,26 +47,42 @@ public class AppOutro extends Execucao {
 				listarClienteGênero.listar();
 				break;
 			case 2:
-				if (empresa.getServicos().size() == 0) {
-					System.out.println("Não há serviços cadastrados!");
+				if (empresa.getProdutos().size() == 0 && empresa.getServicos().size() == 0) {
+					System.out.println("Não há produtos e serviços cadastrados!");
 					break;
 				}
 				Listagem listarMaisConsumidos = new ListarMaisConsumidos(empresa);
 				listarMaisConsumidos.listar();
 				break;
 			case 3:
+				if (empresa.getProdutos().size() == 0 && empresa.getServicos().size() == 0) {
+					System.out.println("Não há produtos e serviços cadastrados!");
+					break;
+				}
 				Listagem listarMaisConsumidoGenero = new ListarMaisConsumidoGenero(empresa);
 				listarMaisConsumidoGenero.listar();
 				break;
 			case 4:
+				if (empresa.getClientes().size() == 0) {
+					System.out.println("Não há clientes cadastrados!");
+					break;
+				}
 				Listagem listarDezMaisConsumiram = new ListarDezConsumiram(empresa, "mais");
 				listarDezMaisConsumiram.listar();
 				break;
 			case 5:
+				if (empresa.getClientes().size() == 0) {
+					System.out.println("Não há clientes cadastrados!");
+					break;
+				}
 				Listagem listarDezMenosConsumiram = new ListarDezConsumiram(empresa, "menos");
 				listarDezMenosConsumiram.listar();
 				break;
 			case 6:
+				if (empresa.getClientes().size() == 0) {
+					System.out.println("Não há clientes cadastrados!");
+					break;
+				}
 				Listagem listarMaisConsumiramValor = new ListarMaisConsumiramValor(empresa);
 				listarMaisConsumiramValor.listar();
 				break;

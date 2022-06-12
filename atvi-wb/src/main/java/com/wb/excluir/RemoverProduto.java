@@ -26,8 +26,15 @@ public class RemoverProduto extends Exclusao{
 		boolean execucaoCliente = true;
 		while(execucaoCliente) {
 		
-			System.out.println("Por favor informe o número do cliente (Digite 0 para sair)");
-			int numCliente = entrada.receberNumeroInteiro(); 
+			int numCliente = 0;
+			while (true) {
+				System.out.println("Por favor informe o numero do cliente (Digite 0 para sair):");
+				numCliente = entrada.receberNumeroInteiro();
+				if (numCliente >= 0 && numCliente <= clientes.size()) {
+					break;
+				}
+				System.out.println("Número de cliente inválido! Verifique se o número inserido está correto.");
+			}
 			
 			if(numCliente == 0) {
 				break;
@@ -45,8 +52,15 @@ public class RemoverProduto extends Exclusao{
 					j++;
 				}
 				
-				System.out.println("Por favor informe o número do produto a ser removido:");
-				int numProduto = entrada.receberNumeroInteiro();
+				int numProduto = 0;
+				while (true) {
+					System.out.println("Por favor informe o numero do produto que deseja atualizar:");
+					numProduto = entrada.receberNumeroInteiro();
+					if (numProduto > 0 && numProduto <= cliente.getProdutosConsumidos().size()) {
+						break;
+					}
+					System.out.println("Número de produto inválido! Verifique se o número inserido está correto.");
+				}
 				
 				cliente.getProdutosConsumidos().remove(numProduto - 1);
 				execucaoCliente = false;

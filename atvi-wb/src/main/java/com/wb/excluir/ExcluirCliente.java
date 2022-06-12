@@ -25,8 +25,15 @@ public class ExcluirCliente extends Exclusao{
 			i++;
 		}
 		
-		System.out.println("Por favor informe o numero do cliente:");
-		int numCliente = entrada.receberNumeroInteiro();
+		int numCliente = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do cliente:");
+			numCliente = entrada.receberNumeroInteiro();
+			if (numCliente > 0 && numCliente <= clientes.size()) {
+				break;
+			}
+			System.out.println("Número de cliente inválido! Verifique se o número inserido está correto.");
+		}
 		
 		this.clientes.remove(numCliente - 1);
 		System.out.println("Cliente excluído com sucesso!");

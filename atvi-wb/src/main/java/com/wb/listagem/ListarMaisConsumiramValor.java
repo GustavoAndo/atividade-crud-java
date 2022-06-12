@@ -68,7 +68,6 @@ public class ListarMaisConsumiramValor extends Listagem {
 			  }
 			});
 		
-			
 		int cont = 1;
 		System.out.println("Lista dos 5 clientes que mais gastaram em " + consumido);
 		System.out.println("--------------------------------------");
@@ -83,5 +82,4 @@ public class ListarMaisConsumiramValor extends Listagem {
 			cont++;			
 		}	
 	}
-
 }

@@ -22,6 +22,7 @@ public class AtualizarCliente extends Atualizacao{
 	@Override
 	public void atualizar() {
 		System.out.println("Início da atualização de um cliente que deseja atualizar");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		System.out.println("Lista de todos os clientes:");
 		int i = 1;
@@ -30,33 +31,38 @@ public class AtualizarCliente extends Atualizacao{
 			i++;
 		}
 		
-		System.out.println("Por favor informe o numero do cliente:");
-		int numCliente = entrada.receberNumeroInteiro();
-		
+		int numCliente = 0;
+		while (true) {
+			System.out.println("Por favor informe o numero do cliente:");
+			numCliente = entrada.receberNumeroInteiro();
+			if (numCliente > 0 && numCliente <= clientes.size()) {
+				break;
+			}
+			System.out.println("Número de cliente inválido! Verifique se o número inserido está correto.");
+		}
+
 		Cliente cliente = clientes.get(numCliente - 1);
 		
 		boolean execucaoSel = true;
-		while(execucaoSel) {
-			
+		while(execucaoSel) {		
 			System.out.println("1) Nome: " + cliente.nome);
 			System.out.println("2) Nome social: " + cliente.nomeSocial);
 			System.out.println("3) Gênero: " + cliente.genero);
-			System.out.println("4) CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + cliente.getCpf().getDataEmissao());
+			System.out.println("4) CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + cliente.getCpf().getDataEmissao().format(formato));
 			System.out.println("5) RG(s): ");
 			for (RG rg : cliente.getRgs()) {
-				System.out.println(" " + rg.getValor() + " - Data Emissão: "  + rg.getDataEmissao());
+				System.out.println(" " + rg.getValor() + " - Data Emissão: "  + rg.getDataEmissao().format(formato));
 			}
 			System.out.println("6) Telefone(s): ");
 			for (Telefone telefone : cliente.getTelefones()) {
-				System.out.println(" (" + telefone.getDdd() + ")" + telefone.getNumero());
+				System.out.println(" (" + telefone.getDdd() + ") " + telefone.getNumero());
 			}
-			System.out.println("7) Data de cadastro: " + cliente.getDataCadastro());
+			System.out.println("7) Data de cadastro: " + cliente.getDataCadastro().format(formato));
 			System.out.println("0) Sair");
 			
 			System.out.println("Por favor informe o numero do dado que você deseja atualizar:");
 			int numDado = entrada.receberNumeroInteiro();
 			entrada.receberTexto();
-			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			
 			switch (numDado) {
 			case 0:
@@ -67,11 +73,13 @@ public class AtualizarCliente extends Atualizacao{
 				System.out.println("Por favor informe o novo valor do nome (Atual: " + cliente.nome + "):");
 				String nome = entrada.receberTexto();
 				cliente.nome = nome;
+				System.out.println("Nome do cliente atualizado com sucesso!");
 				break;
 			case 2:
 				System.out.println("Por favor informe o novo valor do nome social (Atual: " + cliente.nomeSocial + "):");
 				String nomeSocial = entrada.receberTexto();
 				cliente.nomeSocial = nomeSocial;
+				System.out.println("Nome social do cliente atualizado com sucesso!");
 				break;
 			case 3:
 				System.out.println("Por favor informe o novo valor do gênero (Atual: " + cliente.genero + "):");
@@ -97,56 +105,100 @@ public class AtualizarCliente extends Atualizacao{
 					}
 				}
 				cliente.genero = genero;
+				System.out.println("Gênero do cliente atualizado com sucesso!");
 				break;
 			case 4:
 				System.out.println("Por favor informe o novo valor de CPF (Atual: " + cliente.getCpf().getValor() + "):");
 				String cpfValor = entrada.receberTexto();
-				System.out.println("Por favor informe o novo valor de Data de Emissão do CPF (Atual: " + cliente.getCpf().getDataEmissao() + "):");
+				System.out.println("Por favor informe o novo valor de Data de Emissão do CPF, no padrão dd/mm/yyyy (Atual: " + cliente.getCpf().getDataEmissao().format(formato) + "):");
 				String cpfData = entrada.receberTexto();
 				LocalDate cpfDataFormatada = LocalDate.parse(cpfData, formato);
 				CPF cpf = new CPF(cpfDataFormatada, cpfValor);
 				cliente.setCpf(cpf);
+				System.out.println("CPF do cliente atualizado com sucesso!");
 				break;
 			case 5:
 				int j = 1; 
 				for (RG rg : cliente.getRgs()) {
-					System.out.println(j + " - " + rg.getValor() + " - Data Emissão: "  + rg.getDataEmissao());
+					System.out.println(j + " - " + rg.getValor() + " - Data Emissão: " + rg.getDataEmissao().format(formato));
 					j++;
 				} 
-				System.out.println("Por favor informe o RG que deseja atualizar:");
-				int numRg = entrada.receberNumeroInteiro();
+				System.out.println("0 - Adicionar um novo RG");
+				int numRg = 0;
+				while (true) {
+					System.out.println("Por favor informe o RG que deseja atualizar:");
+					numRg = entrada.receberNumeroInteiro();
+					if (numRg >= 0 && numRg <= cliente.getRgs().size()) {
+						break;
+					}
+					System.out.println("Número de RG inválido! Verifique se o número inserido está correto.");
+				}
 				entrada.receberTexto();
-				RG rgAtual = cliente.getRgs().get(numRg - 1);
-				System.out.println("Por favor informe o novo valor do RG (Atual :" + rgAtual.getValor() + ")");
-				String rgValor = entrada.receberTexto();
-				System.out.println("Por favor informe o novo valor da Data de Emissão (Atual:" + rgAtual.getDataEmissao()+ ")");
-				String rgData = entrada.receberTexto();
-				LocalDate rgDataFormatada = LocalDate.parse(rgData, formato);
-				RG rg = new RG(rgDataFormatada, rgValor);
-				cliente.getRgs().set(numRg - 1, rg);
+				if (numRg == 0) {
+					System.out.println("Por favor informe o numero do RG: ");
+					String rgValor = entrada.receberTexto();
+					System.out.println("Por favor informe a Data de Emissão, no padrão dd/mm/yyyy: ");
+					String rgData = entrada.receberTexto();
+					LocalDate rgDataFormatada = LocalDate.parse(rgData, formato);
+					RG rg = new RG(rgDataFormatada, rgValor);
+					cliente.getRgs().add(rg);
+					System.out.println("RG do cliente adicionado com sucesso!");
+				}
+				else {
+					RG rgAtual = cliente.getRgs().get(numRg - 1);
+					System.out.println("Por favor informe o novo valor do RG (Atual: " + rgAtual.getValor() + ")");
+					String rgValor = entrada.receberTexto();
+					System.out.println("Por favor informe o novo valor da Data de Emissão, no padrão dd/mm/yyyy (Atual:" + rgAtual.getDataEmissao().format(formato) + ")");
+					String rgData = entrada.receberTexto();
+					LocalDate rgDataFormatada = LocalDate.parse(rgData, formato);
+					RG rg = new RG(rgDataFormatada, rgValor);
+					cliente.getRgs().set(numRg - 1, rg);
+					System.out.println("RG do cliente atualizado com sucesso!");
+				}
 				break;
 			case 6:
 				int k = 1; 
 				for (Telefone telefone : cliente.getTelefones()) {
 					System.out.println(k + " - (" + telefone.getDdd() + ") "  + telefone.getNumero());
 					k++;
-				} 
-				System.out.println("Por favor informe o telefone que deseja atualizar:");
-				int numTelefone = entrada.receberNumeroInteiro();
+				}
+				System.out.println("0 - Adicionar um novo telefone");
+				int numTelefone = 0;
+				while (true) {
+					System.out.println("Por favor informe o telefone que deseja atualizar:");
+					numTelefone = entrada.receberNumeroInteiro();
+					if (numTelefone >= 0 && numTelefone <= cliente.getTelefones().size()) {
+						break;
+					}
+					System.out.println("Número de telefone inválido! Verifique se o número inserido está correto.");
+				}
 				entrada.receberTexto();
-				Telefone telefoneAtual = cliente.getTelefones().get(numTelefone - 1);
-				System.out.println("Por favor informe o novo valor do DDD (Atual: " + telefoneAtual.getDdd() + ")");
-				String telefoneDdd = entrada.receberTexto();
-				System.out.println("Por favor informe o novo valor do número do telefone (Atual: " + telefoneAtual.getNumero()+ ")");
-				String telefoneNumero = entrada.receberTexto();
-				Telefone telefone = new Telefone(telefoneDdd, telefoneNumero);
-				cliente.getTelefones().set(numTelefone - 1, telefone);
+				if (numTelefone == 0) {
+					System.out.println("Por favor informe o DDD do telefone: ");
+					String telefoneDdd = entrada.receberTexto();
+					System.out.println("Por favor informe o número do telefone: ");
+					String telefoneNumero = entrada.receberTexto();
+					Telefone telefone = new Telefone(telefoneDdd, telefoneNumero);
+					cliente.getTelefones().add(telefone);
+					System.out.println("Telefone do cliente adicionado com sucesso!");
+				}
+				else {
+					Telefone telefoneAtual = cliente.getTelefones().get(numTelefone - 1);
+					System.out.println("Por favor informe o novo valor do DDD (Atual: " + telefoneAtual.getDdd() + ")");
+					String telefoneDdd = entrada.receberTexto();
+					System.out.println("Por favor informe o novo valor do número do telefone (Atual: " + telefoneAtual.getNumero()+ ")");
+					String telefoneNumero = entrada.receberTexto();
+					Telefone telefone = new Telefone(telefoneDdd, telefoneNumero);
+					cliente.getTelefones().set(numTelefone - 1, telefone);
+					System.out.println("Telefone do cliente atualizado com sucesso!");
+				}
 				break;
 			case 7:
-				System.out.println("Por favor informe o novo valor de data cadastrada:");
+				System.out.println("Por favor informe o novo valor de data cadastrada (Atual: " + cliente.getDataCadastro() + "):");
 				String data = entrada.receberTexto();
 				LocalDate dataFormatada = LocalDate.parse(data, formato);
 				cliente.setDataCadastro(dataFormatada);
+				System.out.println("Data cadastrada do cliente atualizado com sucesso!");
 				break;
 			default:
 				System.out.println("Operação não entendida");
