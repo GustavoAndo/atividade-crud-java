@@ -122,8 +122,7 @@ public class ListarMaisConsumidoGenero extends Listagem {
 					System.out.println("Nome: " + quantidadeProduto.produto.nome);
 					System.out.println("Quantidade de vezes consumido: " + quantidadeProduto.getQuantidadeConsumido());
 					System.out.println("--------------------------------------");
-				}
-				
+				}	
 				execucaoConsumido = false;
 			}
 			else {

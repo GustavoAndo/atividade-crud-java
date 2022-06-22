@@ -16,7 +16,8 @@ public class ExcluirProduto extends Exclusao{
 
 	@Override
 	public void excluir() {
-		System.out.println("Início da exclusão de um servico");
+		System.out.println("\nInício da exclusão de um produto");
+		System.out.println("--------------------------------");
 				
 		System.out.println("Lista de todos os servicos:");
 		int i = 1;

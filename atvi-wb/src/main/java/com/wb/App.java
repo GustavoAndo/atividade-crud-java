@@ -11,6 +11,7 @@ import com.wb.modelo.Empresa;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Bem-vindo ao cadastro de clientes do Grupo World Beauty");
+		
 		Empresa empresa = new Empresa();
 		boolean execucao = true;
 		while (execucao) {

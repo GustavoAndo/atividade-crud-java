@@ -3,6 +3,8 @@ package com.wb.excluir;
 import java.util.List;
 
 import com.wb.io.Entrada;
+import com.wb.listagem.Listagem;
+import com.wb.listagem.ListarTodosClientes;
 import com.wb.modelo.Cliente;
 
 public class ExcluirCliente extends Exclusao{
@@ -16,14 +18,12 @@ public class ExcluirCliente extends Exclusao{
 
 	@Override
 	public void excluir() {
-		System.out.println("Início da exclusão de um cliente");
+		System.out.println("\nInício da exclusão de um cliente");
+		System.out.println("--------------------------------");
 				
 		System.out.println("Lista de todos os clientes:");
-		int i = 1;
-		for (Cliente cliente : clientes) {
-			System.out.println(i + " - " + cliente.nome);	
-			i++;
-		}
+		Listagem listagemClientes = new ListarTodosClientes(clientes, 1);
+		listagemClientes.listar();
 		
 		int numCliente = 0;
 		while (true) {

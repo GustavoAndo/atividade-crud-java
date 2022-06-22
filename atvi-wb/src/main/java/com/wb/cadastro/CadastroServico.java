@@ -16,7 +16,8 @@ public class CadastroServico extends Cadastro{
 
 	@Override
 	public void cadastrar() {
-		System.out.println("Início do cadastro do serviço");
+		System.out.println("\nInício do cadastro do serviço");
+		System.out.println("----------------------------");
 		
 		System.out.println("Por favor informe o nome do serviço:");
 		String nome = entrada.receberTexto();

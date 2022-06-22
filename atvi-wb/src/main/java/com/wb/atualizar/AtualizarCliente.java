@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.wb.io.Entrada;
+import com.wb.listagem.Listagem;
+import com.wb.listagem.ListarTodosClientes;
 import com.wb.modelo.CPF;
 import com.wb.modelo.Cliente;
 import com.wb.modelo.RG;
@@ -21,15 +23,12 @@ public class AtualizarCliente extends Atualizacao{
 
 	@Override
 	public void atualizar() {
-		System.out.println("Início da atualização de um cliente que deseja atualizar");
+		System.out.println("\nInício da atualização de um cliente que deseja atualizar");
+		System.out.println("--------------------------------------------------------");
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
-		System.out.println("Lista de todos os clientes:");
-		int i = 1;
-		for (Cliente cliente : clientes) {
-			System.out.println(i + " - " + cliente.nome);	
-			i++;
-		}
+		Listagem listagemClientes = new ListarTodosClientes(clientes, 1);
+		listagemClientes.listar();
 		
 		int numCliente = 0;
 		while (true) {
@@ -45,7 +44,7 @@ public class AtualizarCliente extends Atualizacao{
 		
 		boolean execucaoSel = true;
 		while(execucaoSel) {		
-			System.out.println("1) Nome: " + cliente.nome);
+			System.out.println("\n1) Nome: " + cliente.nome);
 			System.out.println("2) Nome social: " + cliente.nomeSocial);
 			System.out.println("3) Gênero: " + cliente.genero);
 			System.out.println("4) CPF: " + cliente.getCpf().getValor() + " - Data Emissão: " + cliente.getCpf().getDataEmissao().format(formato));
@@ -100,7 +99,7 @@ public class AtualizarCliente extends Atualizacao{
 							execucaoGenero = false;
 						}
 						else {
-						System.out.println("Gênero inválido! Verifique se você digitou corretamente!");
+						System.out.println("Operação não entendida.");
 						}
 					}
 				}
@@ -108,10 +107,34 @@ public class AtualizarCliente extends Atualizacao{
 				System.out.println("Gênero do cliente atualizado com sucesso!");
 				break;
 			case 4:
-				System.out.println("Por favor informe o novo valor de CPF (Atual: " + cliente.getCpf().getValor() + "):");
-				String cpfValor = entrada.receberTexto();
-				System.out.println("Por favor informe o novo valor de Data de Emissão do CPF, no padrão dd/mm/yyyy (Atual: " + cliente.getCpf().getDataEmissao().format(formato) + "):");
-				String cpfData = entrada.receberTexto();
+				System.out.println("O que deseja atualizar?");
+				System.out.println("1 - Valor do CPF");
+				System.out.println("2 - Data de Emissão do CPF");
+				System.out.println("3 - Ambos");
+				int opCpf = entrada.receberNumeroInteiro();
+				entrada.receberTexto();
+				String cpfValor = "";
+				String cpfData = "";
+				switch (opCpf) {
+				case 1:
+					System.out.println("Por favor informe o novo valor de CPF (Atual: " + cliente.getCpf().getValor() + "):");
+					cpfValor = entrada.receberTexto();
+					cpfData = cliente.getCpf().getDataEmissao().format(formato);
+					break;
+				case 2:
+					cpfValor = cliente.getCpf().getValor();
+					System.out.println("Por favor informe o novo valor de Data de Emissão do CPF, no padrão dd/mm/yyyy (Atual: " + cliente.getCpf().getDataEmissao().format(formato) + "):");
+					cpfData = entrada.receberTexto();	
+					break;
+				case 3:
+					System.out.println("Por favor informe o novo valor de CPF (Atual: " + cliente.getCpf().getValor() + "):");
+					cpfValor = entrada.receberTexto();
+					System.out.println("Por favor informe o novo valor de Data de Emissão do CPF, no padrão dd/mm/yyyy (Atual: " + cliente.getCpf().getDataEmissao().format(formato) + "):");
+					cpfData = entrada.receberTexto();	
+					break;
+				default:
+					System.out.println("Operação não entendida.");
+				}
 				LocalDate cpfDataFormatada = LocalDate.parse(cpfData, formato);
 				CPF cpf = new CPF(cpfDataFormatada, cpfValor);
 				cliente.setCpf(cpf);

@@ -80,6 +80,7 @@ public class ListarDezConsumiram extends Listagem {
 			}
 			System.out.println(cont + ")");
 			System.out.println("Nome: " + quantidadeCliente.cliente.nome);
+			System.out.println("CPF: " + quantidadeCliente.cliente.getCpf().getValor());
 			System.out.println("Quantidade de " + consumido +  " consumidos: " + quantidadeCliente.getQuantidadeConsumido());
 			System.out.println("--------------------------------------");
 			cont++;			

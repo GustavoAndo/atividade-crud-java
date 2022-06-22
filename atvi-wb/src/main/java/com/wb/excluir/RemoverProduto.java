@@ -20,7 +20,7 @@ public class RemoverProduto extends Exclusao{
 		System.out.println("Lista de todos os clientes:");
 		int i = 1;
 		for (Cliente cliente : clientes) {
-			System.out.println(i + ") " + cliente.nome);	
+			System.out.println(i + ") " + cliente.nome + " - CPF: " + cliente.getCpf().getValor());	
 			i++;
 		}
 		boolean execucaoCliente = true;

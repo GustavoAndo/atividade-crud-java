@@ -16,7 +16,8 @@ public class AtualizarServico extends Atualizacao{
 
 	@Override
 	public void atualizar() {
-		System.out.println("Início da atualização de um serviço");
+		System.out.println("\nInício da atualização de um serviço");
+		System.out.println("-----------------------------------");
 		
 		System.out.println("Lista de todos os serviços:");
 		int i = 1;

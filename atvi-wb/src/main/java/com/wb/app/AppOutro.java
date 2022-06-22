@@ -22,7 +22,7 @@ public class AppOutro extends Execucao {
 	public void executar() {
 		boolean execucao = true;
 		while (execucao) {
-			System.out.println("Que tipo de operação de listagem você deseja fazer:");
+			System.out.println("\nQue tipo de operação de listagem você deseja fazer:");
 			System.out.println("1 - Todos clientes por gênero");
 			System.out.println("2 - Seviços ou produtos mais consumidos (em geral)");
 			System.out.println("3 - Serviços ou produtos mais consumidos por gênero");

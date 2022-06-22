@@ -21,7 +21,8 @@ public class CadastroCliente extends Cadastro {
 
 	@Override
 	public void cadastrar() {
-		System.out.println("Início do cadastro do cliente");
+		System.out.println("\nInício do cadastro do cliente");
+		System.out.println("------------------------------");
 		System.out.println("Por favor informe o nome do cliente:");
 		String nome = entrada.receberTexto();
 		
@@ -45,7 +46,7 @@ public class CadastroCliente extends Cadastro {
 					execucaoGenero = false;
 				}
 				else {
-				System.out.println("Valor inválido! Verifique se você digitou corretamente!");
+					System.out.println("Operação não entendida.");
 				}
 			}
 		}
@@ -94,7 +95,7 @@ public class CadastroCliente extends Cadastro {
 					execucaoRg = false;
 					break;
 				default:
-					System.out.println("Operação não entendida");
+					System.out.println("Operação não entendida.");
 				}
 			}
 		}
@@ -128,7 +129,7 @@ public class CadastroCliente extends Cadastro {
 					execucaoTel = false;
 					break;
 				default:
-					System.out.println("Operação não entendida");
+					System.out.println("Operação não entendida.");
 				}
 			}
 		}

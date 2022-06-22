@@ -16,7 +16,8 @@ public class CadastroProduto extends Cadastro{
 
 	@Override
 	public void cadastrar() {
-		System.out.println("Início do cadastro do produto");
+		System.out.println("\nInício do cadastro do produto");
+		System.out.println("-----------------------------");
 		
 		System.out.println("Por favor informe o nome do produto:");
 		String nome = entrada.receberTexto();

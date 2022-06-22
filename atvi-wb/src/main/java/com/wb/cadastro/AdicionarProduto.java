@@ -22,7 +22,7 @@ public class AdicionarProduto extends Cadastro{
 		System.out.println("Lista de todos os clientes:");
 		int i = 1;
 		for (Cliente cliente : clientes) {
-			System.out.println(i + ") " + cliente.nome);	
+			System.out.println(i + ") " + cliente.nome + " - CPF: " + cliente.getCpf().getValor());	
 			i++;
 		}
 		
@@ -54,9 +54,20 @@ public class AdicionarProduto extends Cadastro{
 			}
 			System.out.println("Número de produto inválido! Verifique se o número inserido está correto.");
 		}
+		int numQuantidade = 0;
+		while (true) {
+			System.out.println("Por favor informe a quantidade que deseja adicionar:");
+			numQuantidade = entrada.receberNumeroInteiro();
+			entrada.receberTexto();
+			if (numQuantidade > 0) {
+				break;
+			}
+			System.out.println("Número de serviço inválido! Verifique se o número inserido está correto.");
+		}
 		
 		Produto produto = produtos.get(numProduto - 1);
-		
-		cliente.getProdutosConsumidos().add(produto);
+		for (i = 1; i <= numQuantidade; i++) {
+			cliente.getProdutosConsumidos().add(produto);
+		}
 	}
 }

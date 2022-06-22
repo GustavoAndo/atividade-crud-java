@@ -16,7 +16,8 @@ public class AtualizarProduto extends Atualizacao {
 
 	@Override
 	public void atualizar() {
-		System.out.println("Início da atualização de um produto");
+		System.out.println("\nInício da atualização de um produto");
+		System.out.println("-----------------------------------");
 		
 		System.out.println("Lista de todos os produtos:");
 		int i = 1;

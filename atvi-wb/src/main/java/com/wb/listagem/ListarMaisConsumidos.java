@@ -98,10 +98,10 @@ public class ListarMaisConsumidos extends Listagem {
 				System.out.println("--------------------------------------");
 				for (QuantidadeProduto quantidadeProduto : quantidadeTodosProdutos) {
 					System.out.println("Nome: " + quantidadeProduto.produto.nome);
+					System.out.println("Valor: " + quantidadeProduto.produto.valor);
 					System.out.println("Quantidade de vezes consumido: " + quantidadeProduto.getQuantidadeConsumido());
 					System.out.println("--------------------------------------");
 				}
-				
 				execucaoConsumido = false;
 			}
 			else {

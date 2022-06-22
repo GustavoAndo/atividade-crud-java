@@ -28,7 +28,7 @@ public class AppCliente extends Execucao {
 	public void executar() {
 		boolean execucao = true;
 		while (execucao) {
-			System.out.println("Que tipo de operação você deseja fazer:");
+			System.out.println("\nQue tipo de operação você deseja fazer:");
 			System.out.println("1 - Cadastrar cliente");
 			System.out.println("2 - Listar todos os clientes");
 			System.out.println("3 - Atualizar dados de um cliente");
@@ -55,7 +55,7 @@ public class AppCliente extends Execucao {
 					System.out.println("Não há clientes cadastrados!");
 					break;
 				}
-				Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes());
+				Listagem listagemClientes = new ListarTodosClientes(empresa.getClientes(), 0);
 				listagemClientes.listar();
 				break;
 			case 3:
@@ -123,7 +123,7 @@ public class AppCliente extends Execucao {
 				removerProduto.excluir();
 				break;
 			default:
-				System.out.println("Operação não entendida");
+				System.out.println("\nOperação não entendida");
 			}
 		}
 	}
